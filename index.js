@@ -4,13 +4,13 @@ const IoTData = new AWS.IotData({endpoint: 'aqg8dgtz1k884-ats.iot.us-east-2.amaz
 
 let userName="";
 
-const FeedFullParams = {
+let FeedFullParams = {
     topic: 'ucb/testIoT_catFeeder',
     payload: '{"action": "FULL"}',
     qos: 0
 };
 
-const FeedHalfParams = {
+let FeedHalfParams = {
     topic: 'ucb/testIoT_catFeeder',
     payload: '{"action": "HALF"}',
     qos: 0
@@ -129,7 +129,7 @@ const CaptureIntentVerifyCatHandler = {
                 else{
                   speechText = "Your cat may be Far";
                 }
-                speechText = speechText+distanceInt;
+                speechText = speechText+". The distance is "+distanceInt;
                 return handlerInput.responseBuilder
                     .speak(speechText)
                     .reprompt(speechText)
